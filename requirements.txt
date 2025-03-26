@@ -1,8 +1,11 @@
+fastapi
+uvicorn
 numpy
-matplotlib
 pandas
 scikit-learn
 tensorflow
-keras
+joblib
+matplotlib
 seaborn
-transformers
+tqdm
+streamlit
