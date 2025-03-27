@@ -1,7 +1,7 @@
 # LSTM - Sentiment Analysis
 
 A twitter sentiment analysis project built with LSTM.
-<img width="1282" alt="Screenshot 2025-03-26 at 6 54 16 PM" src="https://github.com/user-attachments/assets/713f466f-4ced-4e48-b1f9-6bdc7ea24d00" />
+<img width="641" alt="Screenshot 2025-03-26 at 6 54 16 PM" src="https://github.com/user-attachments/assets/713f466f-4ced-4e48-b1f9-6bdc7ea24d00" />
 This is a deep learning project that deals with building an LSTM neural network to predict sentiments of given tweets. 
 
 
