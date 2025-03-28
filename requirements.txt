@@ -9,6 +9,6 @@ matplotlib
 seaborn
 tqdm
 streamlit
-limes
+lime
 nltk
 pickle
