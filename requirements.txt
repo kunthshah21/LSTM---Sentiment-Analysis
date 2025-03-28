@@ -9,3 +9,6 @@ matplotlib
 seaborn
 tqdm
 streamlit
+limes
+nltk
+pickle

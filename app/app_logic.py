@@ -4,6 +4,7 @@ import pickle
 from tensorflow.keras.models import load_model
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
+from lime.lime_text import LimeTextExplainer  # new import
 
 #########################################
 # Text Cleaning Function
@@ -110,6 +111,29 @@ def analyze_sentiment(text, model, glove_embeddings, tfidf_vectorizer):
     predicted_class = np.argmax(prediction, axis=1)[0]
     mapping = {0: "Negative", 1: "Neutral", 2: "Positive"}
     return mapping.get(predicted_class, "Unknown")
+
+def analyze_sentiment_with_lime(text, model, glove_embeddings, tfidf_vectorizer):
+    # Build a prediction function for LIME which expects a list of texts.
+    def predict_proba(texts):
+        results = []
+        for t in texts:
+            cleaned = clean_text(t)
+            idf_scores = dict(zip(tfidf_vectorizer.get_feature_names_out(), tfidf_vectorizer.idf_))
+            feature_names = set(tfidf_vectorizer.get_feature_names_out())
+            embedding = get_tweet_embedding(cleaned, glove_embeddings, idf_scores, feature_names)
+            embedding = embedding.reshape(1, 1, 200)
+            pred = model.predict(embedding)[0]
+            results.append(pred)
+        return np.array(results)
+    
+    explainer = LimeTextExplainer(class_names=["Negative", "Neutral", "Positive"])
+    explanation = explainer.explain_instance(text, predict_proba, num_features=len(text.split()))
+    probs = predict_proba([text])[0]
+    predicted_class = np.argmax(probs)
+    mapping = {0: "Negative", 1: "Neutral", 2: "Positive"}
+    sentiment = mapping.get(predicted_class, "Unknown")
+    lime_scores = explanation.as_list(label=predicted_class)
+    return sentiment, lime_scores
 
 if __name__ == "__main__":
     main()
