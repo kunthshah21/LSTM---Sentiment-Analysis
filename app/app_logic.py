@@ -2,6 +2,8 @@ import re
 import numpy as np
 import pickle
 from tensorflow.keras.models import load_model
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
 
 #########################################
 # Text Cleaning Function
@@ -16,8 +18,11 @@ def clean_text(text):
     text = re.sub(r'\d', '', text)  # remove digits
     text = re.sub(r'\s+', ' ', text)  # fix multiple spacing
     text = re.sub(r'^\s+|\s+?$', '', text)  # trim leading/trailing spaces
-    
-    
+
+    # Apply lemmatization
+    lemmatizer = WordNetLemmatizer()
+    tokens = word_tokenize(text)
+    text = ' '.join([lemmatizer.lemmatize(word) for word in tokens])
     return text
 
 #########################################
