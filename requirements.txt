@@ -11,4 +11,3 @@ tqdm
 streamlit
 lime
 nltk
-pickle
