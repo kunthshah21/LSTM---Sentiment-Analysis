@@ -129,7 +129,13 @@ def analyze_sentiment_with_lime(text, model, glove_embeddings, tfidf_vectorizer)
     explainer = LimeTextExplainer(class_names=["Negative", "Neutral", "Positive"])
     explanation = explainer.explain_instance(text, predict_proba, num_features=len(text.split()))
     probs = predict_proba([text])[0]
-    predicted_class = np.argmax(probs)
+    predicted_class = int(np.argmax(probs))  # convert to int
+    
+    # Ensure the predicted_class is one of the available labels
+    available_labels = explanation.available_labels()
+    if predicted_class not in available_labels:
+        predicted_class = available_labels[0]
+    
     mapping = {0: "Negative", 1: "Neutral", 2: "Positive"}
     sentiment = mapping.get(predicted_class, "Unknown")
     lime_scores = explanation.as_list(label=predicted_class)
