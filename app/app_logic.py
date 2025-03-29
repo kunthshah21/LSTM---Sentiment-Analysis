@@ -66,11 +66,11 @@ def main():
     model = load_model("lstm_model.keras")
 
     # Load pre-trained GloVe embeddings (200d)
-    glove_path = "glove.twitter.27B.200d.txt"
+    glove_path = "app/glove.twitter.27B.200d.txt"
     glove_embeddings = load_glove_embeddings(glove_path)
 
     # Load the fitted TF-IDF vectorizer from file
-    with open("tfidf_vectorizer.pkl", "rb") as f:
+    with open("app/tfidf_vectorizer.pkl", "rb") as f:
         tfidf_vectorizer = pickle.load(f)
 
     # Extract TF-IDF idf scores and feature names
