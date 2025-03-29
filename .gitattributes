@@ -1,3 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *.csv filter=lfs diff=lfs merge=lfs -text
+glove.twitter.27B.200d.txt filter=lfs diff=lfs merge=lfs -text
