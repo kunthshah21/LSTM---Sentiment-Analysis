@@ -1,7 +1,7 @@
 # LSTM - Sentiment Analysis
 
+<img width="1421" alt="Screenshot 2025-03-29 at 5 30 27 PM" src="https://github.com/user-attachments/assets/09420877-53c1-4a7e-a6bc-929dfc35e19a" />
 A twitter sentiment analysis project built with LSTM.
-<img width="641" alt="Screenshot 2025-03-26 at 6 54 16 PM" src="https://github.com/user-attachments/assets/713f466f-4ced-4e48-b1f9-6bdc7ea24d00" />
 This is a deep learning project that deals with building an LSTM neural network to predict sentiments of given tweets. 
 
 ## Running the Streamlit App
@@ -60,14 +60,6 @@ The model builds a robust sentiment analysis pipeline:
 - **Other Processing**: 
   - Adjusted data types and converted embedding vectors to a format suitable for feeding into the LSTM model.
 
-
-## Requirements
-
-Make sure you have Python 3.7+ installed. The project uses:
-- numpy, pandas, matplotlib, seaborn
-- nltk, scikit-learn
-- TensorFlow / Keras
-- streamlit
 
 ### Model Building and Architecture
 This multi-class LSTM model uses four LSTM layers with descending unit sizes and includes BatchNormalization, Dropout, and L2 regularization for stability and generalization. Key choices:
