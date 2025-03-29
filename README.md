@@ -36,7 +36,7 @@ This is a deep learning project that deals with building an LSTM neural network 
   - Building, training, and evaluating an LSTM model for multi-class sentiment prediction
 - **app/**: Contains the Streamlit application to serve the model.
 
-## Model Approach
+# Exploratory Data Analysis and Processing
 
 The model builds a robust sentiment analysis pipeline:
 - **Data Pre-processing**: Removing null values, duplicates, and unwanted columns.
@@ -61,7 +61,7 @@ The model builds a robust sentiment analysis pipeline:
   - Adjusted data types and converted embedding vectors to a format suitable for feeding into the LSTM model.
 
 
-### Model Building and Architecture
+# Model Building and Architecture
 This multi-class LSTM model uses four LSTM layers with descending unit sizes and includes BatchNormalization, Dropout, and L2 regularization for stability and generalization. Key choices:
 
 - **Layer Configuration**:
@@ -139,7 +139,7 @@ Although the model shows reasonable performance, several limitations remain:
 - **Class Imbalances**: Lower metrics on the neutral class indicate uneven representation and difficulty in handling ambiguous sentiment.    
 - **Data Constraints**: The variable nature of tweets and possible slang usage may require more robust language models or additional pre-processing to handle out-of-vocabulary terms effectively.
 
-### Business Application
+# Business Application
 
 The sentiment analysis model for Twitter tweets can provide significant value to businesses by enabling them to:
 
