@@ -141,3 +141,4 @@ These metrics show that the model tends to handle positive and negative tweets m
 Although the model shows reasonable performance, several limitations remain:
 - **Class Imbalances**: Lower metrics on the neutral class indicate uneven representation and difficulty in handling ambiguous sentiment.    
 - **Data Constraints**: The variable nature of tweets and possible slang usage may require more robust language models or additional pre-processing to handle out-of-vocabulary terms effectively.
+
