@@ -4,6 +4,26 @@ A twitter sentiment analysis project built with LSTM.
 <img width="641" alt="Screenshot 2025-03-26 at 6 54 16 PM" src="https://github.com/user-attachments/assets/713f466f-4ced-4e48-b1f9-6bdc7ea24d00" />
 This is a deep learning project that deals with building an LSTM neural network to predict sentiments of given tweets. 
 
+## Running the Streamlit App
+
+1. **Install Dependencies**:  
+   Run the following command to install required packages.  
+   ```
+   pip install -r requirements.txt
+   ```
+2. **Run the App**:  
+   Launch the Streamlit application by executing:  
+   ```
+   streamlit run app.py
+   ``` 
+
+3. **View the App**:  
+   A browser window should open showing the interactive sentiment analysis interface.
+
+
+4. **Get the sentiment**:  
+   Write the tweet and it will give you the sentiment of the tweet, along with the lime score for each word. The computation time might be longer for the lime score, depending on length of tweet. 
+
 
 ## Files Overview
 
@@ -40,21 +60,6 @@ The model builds a robust sentiment analysis pipeline:
 - **Other Processing**: 
   - Adjusted data types and converted embedding vectors to a format suitable for feeding into the LSTM model.
 
-## Running the Streamlit App
-
-1. **Install Dependencies**:  
-   Run the following command to install required packages.  
-   ```
-   pip install -r requirements.txt
-   ```
-2. **Run the App**:  
-   Launch the Streamlit application by executing:  
-   ```
-   streamlit run app/app.py
-   ``` 
-
-3. **View the App**:  
-   A browser window should open showing the interactive sentiment analysis interface.
 
 ## Requirements
 
@@ -98,34 +103,34 @@ The LSTM was trained with:
 - Epochs: up to 100 (with early stopping monitoring validation loss)
 
 At the end of training:
-- AUC: 0.7884, loss: 0.8895
-- Validation AUC: 0.7809, validation loss: 0.9040
+- AUC: 0.8061, accuracy: 0.6310, loss: 0.8693
+- Validation AUC: 0.7768, validation accuracy: 0.6031, validation loss: 0.9254
 
 #### Test Set Results
 
-- Accuracy: ~58%
+- Accuracy: ~64%
 
 | Metric    | Class 0 (Negative) | Class 1 (Neutral) | Class 2 (Positive) |
 | --------- | ------------------ | ----------------- | ------------------ |
-| Precision | 0.60               | 0.43              | 0.61               |
-| Recall    | 0.70               | 0.24              | 0.66               |
-| F1-Score  | 0.65               | 0.31              | 0.63               |
+| Precision | 0.60               | 0.41              | 0.61               |
+| Recall    | 0.69               | 0.26              | 0.64               |
+| F1-Score  | 0.64               | 0.32              | 0.63               |
 
 **Confusion Matrix:**
 ```
-[ [1124, 139, 339],
-  [ 350, 205, 305],
-  [ 392, 132, 997] ]
+[ [1098, 175, 329],
+  [ 349, 224, 287],
+  [ 398, 147, 976] ]
 ```
 
 **Per-class AUC:**
 | Class             | AUC    |
 | ----------------- | ------ |
-| Class 0 (Negative) | 0.7672 |
-| Class 1 (Neutral)  | 0.6860 |
-| Class 2 (Positive) | 0.7710 |
+| Class 0 (Negative) | 0.7521 |
+| Class 1 (Neutral)  | 0.6657 |
+| Class 2 (Positive) | 0.7608 |
 
-MCC (Matthews Correlation Coefficient): 0.3422
+MCC (Matthews Correlation Coefficient): 0.3329
 
 #### Interpreting the Scores
 - **Precision**: Measures how often predicted positives were truly positive. For example, Class 2 (Positive) has a precision of 0.61, meaning that out of all tweets predicted as positive, 61% were actually positive.  
@@ -141,4 +146,28 @@ These metrics show that the model tends to handle positive and negative tweets m
 Although the model shows reasonable performance, several limitations remain:
 - **Class Imbalances**: Lower metrics on the neutral class indicate uneven representation and difficulty in handling ambiguous sentiment.    
 - **Data Constraints**: The variable nature of tweets and possible slang usage may require more robust language models or additional pre-processing to handle out-of-vocabulary terms effectively.
+
+### Business Application
+
+The sentiment analysis model for Twitter tweets can provide significant value to businesses by enabling them to:
+
+- **Monitor Brand Sentiment**: Analyze customer opinions about their brand, products, or services in real-time to identify trends and address issues proactively.
+- **Competitor Analysis**: Track sentiment around competitors to gain insights into their strengths and weaknesses.
+- **Customer Feedback Analysis**: Understand customer satisfaction and pain points by analyzing tweets related to their offerings.
+- **Marketing Campaign Evaluation**: Measure the impact of marketing campaigns by assessing the sentiment of tweets before, during, and after the campaign.
+- **Crisis Management**: Detect negative sentiment spikes to respond quickly to potential PR crises.
+- **Product Development**: Gather insights from customer feedback to guide product improvements or new feature development.
+
+### Further Development of the App and Its Business Application
+
+This application can be extended to allow businesses to upload a CSV file containing multiple tweets for batch sentiment analysis. This enhancement would enable businesses to:
+- **Scale Analysis**: Process large datasets of tweets efficiently, saving time and resources.
+- **Data-Driven Decision Making**: Use aggregated sentiment insights to make informed decisions about marketing strategies, customer engagement, and product development.
+- **Trend Analysis**: Identify patterns and trends over time by analyzing historical tweet data.
+- **Custom Reporting**: Generate detailed sentiment reports for stakeholders to support strategic planning.
+
+By incorporating CSV input functionality, the app can become a more versatile tool for businesses, empowering them to leverage data for competitive advantage.
+
+
+
 
